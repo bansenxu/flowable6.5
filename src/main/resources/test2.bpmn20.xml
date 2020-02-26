@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.flowable.org/processdef">
+  <process id="test2" name="test2" isExecutable="true">
+    <startEvent id="startEvent1" name="开始" flowable:formFieldValidation="true"></startEvent>
+    <endEvent id="sid-9059BBA7-DAD8-4000-BAE0-EC6B32E1958F" name="结束"></endEvent>
+    <serviceTask id="sid-A73621A5-9DB6-41C6-A262-1B179FC23B34" name="入库" flowable:class="com.bootdo.modules.flowable.db.SqlNode"></serviceTask>
+    <serviceTask id="sid-C6A55A68-5CAA-451B-9784-2EFF3ADE5C67" name="创建域" flowable:type="http">
+      <extensionElements>
+        <flowable:field name="requestMethod">
+          <flowable:string><![CDATA[GET]]></flowable:string>
+        </flowable:field>
+        <flowable:field name="requestUrl">
+          <flowable:string><![CDATA[http://127.0.0.1:8180/auth/admin/realms]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="sid-27D2D83B-B2D1-4E80-9159-D09AD16C193C" sourceRef="startEvent1" targetRef="sid-C6A55A68-5CAA-451B-9784-2EFF3ADE5C67"></sequenceFlow>
+    <sequenceFlow id="sid-CE400E4B-D449-45DC-BE24-7F4DD002E043" sourceRef="sid-C6A55A68-5CAA-451B-9784-2EFF3ADE5C67" targetRef="sid-A73621A5-9DB6-41C6-A262-1B179FC23B34"></sequenceFlow>
+    <sequenceFlow id="sid-B2AB90E6-3B06-4B5B-9CDE-2B79D1806136" sourceRef="sid-A73621A5-9DB6-41C6-A262-1B179FC23B34" targetRef="shell"></sequenceFlow>
+    <serviceTask id="shell" name="命令" flowable:class="com.bootdo.modules.flowable.shell.ShellNode"></serviceTask>
+    <sequenceFlow id="sid-895B6762-E0A4-46F1-9ADC-933177E20941" sourceRef="shell" targetRef="sid-9059BBA7-DAD8-4000-BAE0-EC6B32E1958F"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_test2">
+    <bpmndi:BPMNPlane bpmnElement="test2" id="BPMNPlane_test2">
+      <bpmndi:BPMNShape bpmnElement="startEvent1" id="BPMNShape_startEvent1">
+        <omgdc:Bounds height="30.0" width="30.0" x="45.0" y="145.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-9059BBA7-DAD8-4000-BAE0-EC6B32E1958F" id="BPMNShape_sid-9059BBA7-DAD8-4000-BAE0-EC6B32E1958F">
+        <omgdc:Bounds height="28.0" width="28.0" x="900.0" y="146.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-A73621A5-9DB6-41C6-A262-1B179FC23B34" id="BPMNShape_sid-A73621A5-9DB6-41C6-A262-1B179FC23B34">
+        <omgdc:Bounds height="80.0" width="100.0" x="390.0" y="120.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-C6A55A68-5CAA-451B-9784-2EFF3ADE5C67" id="BPMNShape_sid-C6A55A68-5CAA-451B-9784-2EFF3ADE5C67">
+        <omgdc:Bounds height="80.0" width="100.0" x="195.0" y="120.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="shell" id="BPMNShape_shell">
+        <omgdc:Bounds height="80.0" width="100.0" x="600.0" y="120.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-895B6762-E0A4-46F1-9ADC-933177E20941" id="BPMNEdge_sid-895B6762-E0A4-46F1-9ADC-933177E20941">
+        <omgdi:waypoint x="699.9499999999999" y="160.0"></omgdi:waypoint>
+        <omgdi:waypoint x="900.0" y="160.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-B2AB90E6-3B06-4B5B-9CDE-2B79D1806136" id="BPMNEdge_sid-B2AB90E6-3B06-4B5B-9CDE-2B79D1806136">
+        <omgdi:waypoint x="489.94999999999936" y="159.69031259072872"></omgdi:waypoint>
+        <omgdi:waypoint x="599.9999999999986" y="159.00869060292266"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-CE400E4B-D449-45DC-BE24-7F4DD002E043" id="BPMNEdge_sid-CE400E4B-D449-45DC-BE24-7F4DD002E043">
+        <omgdi:waypoint x="294.94999999986936" y="160.0"></omgdi:waypoint>
+        <omgdi:waypoint x="389.9999999999363" y="160.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-27D2D83B-B2D1-4E80-9159-D09AD16C193C" id="BPMNEdge_sid-27D2D83B-B2D1-4E80-9159-D09AD16C193C">
+        <omgdi:waypoint x="74.94999946593475" y="160.0"></omgdi:waypoint>
+        <omgdi:waypoint x="194.9999999999298" y="160.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="id" name="id" th:value="${order.id}"  type="hidden">
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">分销记录id：</label>
+								<div class="col-sm-8">
+									<input id="saleProductId" name="saleProductId" th:value="${order.saleProductId}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">买方企业名称：</label>
+								<div class="col-sm-8">
+									<input id="buyComName" name="buyComName" th:value="${order.buyComName}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">买房企业编码：</label>
+								<div class="col-sm-8">
+									<input id="buyComCode" name="buyComCode" th:value="${order.buyComCode}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">单价：</label>
+								<div class="col-sm-8">
+									<input id="price" name="price" th:value="${order.price}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">数量：</label>
+								<div class="col-sm-8">
+									<input id="count" name="count" th:value="${order.count}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">产品编码：</label>
+								<div class="col-sm-8">
+									<input id="productCode" name="productCode" th:value="${order.productCode}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">产品名称：</label>
+								<div class="col-sm-8">
+									<input id="produceName" name="produceName" th:value="${order.produceName}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">票面金额：</label>
+								<div class="col-sm-8">
+									<input id="sumAmount" name="sumAmount" th:value="${order.sumAmount}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">卖方企业名称：</label>
+								<div class="col-sm-8">
+									<input id="saleComName" name="saleComName" th:value="${order.saleComName}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">卖方企业编码：</label>
+								<div class="col-sm-8">
+									<input id="saleComCode" name="saleComCode" th:value="${order.saleComCode}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">订单状态：</label>
+								<div class="col-sm-8">
+									<input id="state" name="state" th:value="${order.state}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">开票状态 ：</label>
+								<div class="col-sm-8">
+									<input id="taxState" name="taxState" th:value="${order.taxState}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/bz/sale_order/edit.js">
+	</script>
+</body>
+</html>
