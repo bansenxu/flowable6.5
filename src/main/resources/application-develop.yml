@@ -11,7 +11,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://122.112.4.150:3306/workflow?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://122.112.4.150:3306/fw65?useUnicode=true&characterEncoding=utf8
     username: root
     password: Bansenxu123abc!!!!!
     #url: jdbc:mysql://localhost:3306/workflow?useUnicode=true&characterEncoding=utf8
