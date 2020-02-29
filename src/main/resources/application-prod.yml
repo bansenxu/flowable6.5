@@ -9,7 +9,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://122.112.4.150:3306/workflow?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://122.112.4.150:3306/fw65?useUnicode=true&characterEncoding=utf8
     username: root
     password: Bansenxu123abc!!!!!
     #url: ENC(N55qN9yxOuboFtK0H+ivxApdKZrzAcVxwkFYMN7p+4rTHwRAsWd6fOETmh4SW55MWgQJh91RBhUG5TSy557lQo+/wjcb/LK3Hu0x6E2ZIUTC6GJAVuaaGDJdEV2iC1TC)
@@ -55,7 +55,7 @@ spring:
         
         max-wait: -1
 server:
-  port: 8101
+  port: 8201
 keycloak:
   enable: true
   configurationFile: "classpath:keycloak-test.json"

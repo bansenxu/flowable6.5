@@ -1,4 +1,20 @@
 -- ----------------------------
+-- Table structure for act_de_category
+-- ----------------------------
+DROP TABLE IF EXISTS `act_de_category`;
+CREATE TABLE `act_de_category`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) NULL DEFAULT NULL,
+  `code` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `url` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '#',
+  `icon` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '#',
+  `sort_num` int(11) NULL DEFAULT 1,
+  `isvalid` int(11) NULL DEFAULT 1 COMMENT '0-- 无效，1 -- 有效',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
 -- Table structure for act_http_url
 -- ----------------------------
 DROP TABLE IF EXISTS `act_http_url`;

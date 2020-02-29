@@ -217,12 +217,24 @@
           "DESCRIPTION" : "执行sql时选择此选项"
         }
       },
+      "SERVICETASKFAILEDJOBRETRYTIMECYCLEPACKAGE" : {
+          "SERVICETASKFAILEDJOBRETRYTIMECYCLE" : {
+            "TITLE" : "失败的作业重试时间周期",
+            "DESCRIPTION" : "用失败的作业重试时间周期定义的服务任务逻辑"
+          }
+      },
       "SERVICETASKFIELDSPACKAGE" : {
         "SERVICETASKFIELDS" : {
           "TITLE" : "类中的字段",
           "DESCRIPTION" : "字段扩展"
         }
       },
+      "SERVICETASKEXCEPTIONSPACKAGE" : {
+          "SERVICETASKEXCEPTIONS" : {
+            "TITLE" : "异常",
+            "DESCRIPTION" : "映射异常"
+          }
+        },
       "SERVICETASKRESULTVARIABLEPACKAGE" : {
       	"SERVICETASKRESULTVARIABLE" : {
           "TITLE" : "结果变量名",
@@ -393,12 +405,20 @@
         "MAILTASKTEXT" : {
           "TITLE" : "正文",
           "DESCRIPTION" : "Email中的内容, 案例一需要发送纯文件的邮件. 可使用Html格式的邮件进行发送，若邮件的接收的客户端不支持这种格式，客户端可转为纯文本的邮件"
+        },
+        "MAILTASKTEXTVAR" : {
+            "TITLE" : "正文变量",
+            "DESCRIPTION" : "保存作为电子邮件内容的文本的过程变量的名称，以防需要发送纯非格式的富电子邮件。可与html结合使用，用于不支持丰富内容的电子邮件客户端。然后，客户将返回到这个文本唯一的选择。"
         }
       },
       "MAILTASKHTMLPACKAGE" : {
         "MAILTASKHTML" : {
           "TITLE" : "Html",
           "DESCRIPTION" : "HTML中的一片段作为邮件的内容."
+        },
+        "MAILTASKHTMLVAR" : {
+            "TITLE" : "Html页面变量",
+            "DESCRIPTION" : "保存作为电子邮件内容的HTML的过程变量的名称。"
         }
       },
       "MAILTASKCHARSETPACKAGE" : {
@@ -761,6 +781,81 @@
           "DESCRIPTION" : "升级的定义"
         }
       },
+
+      "EVENTREGISTRYPACKAGE" : {
+        "EVENTKEY" : {
+          "TITLE" : "事件key",
+          "DESCRIPTION" : "事件key定义"
+        },
+        "EVENTNAME" : {
+          "TITLE" : "事件名称",
+          "DESCRIPTION" : "事件名称定义"
+        },
+        "EVENTINPARAMETERS" : {
+          "TITLE" : "事件载体映射",
+          "DESCRIPTION" : "将流程变量映射到事件有效载体的属性"
+        },
+        "EVENTOUTPARAMETERS" : {
+          "TITLE" : "从事件有效载体映射到流程",
+          "DESCRIPTION" : "将事件有效载体的属性映射到流程变量"
+        },
+        "EVENTCORRELATIONPARAMETERS" : {
+          "TITLE" : "相关参数",
+          "DESCRIPTION" : "相关参数定义"
+        },
+        "CHANNELKEY" : {
+          "TITLE" : "通道key",
+          "DESCRIPTION" : "通道key定义"
+        },
+        "CHANNELNAME" : {
+          "TITLE" : "通道名称",
+          "DESCRIPTION" : "通道名称定义"
+        },
+        "CHANNELTYPE" : {
+          "TITLE" : "通道类型",
+          "DESCRIPTION" : "通道类型定义"
+        },
+        "CHANNELDESTINATION" : {
+          "TITLE" : "通道目的地",
+          "DESCRIPTION" : "通道目的地定义"
+        },
+        "TRIGGEREVENTKEY" : {
+          "TITLE" : "触发事件key",
+          "DESCRIPTION" : "触发事件key定义"
+        },
+        "TRIGGEREVENTNAME" : {
+          "TITLE" : "触发事件名称",
+          "DESCRIPTION" : "触发事件名称定义"
+        },
+        "TRIGGERCHANNELKEY" : {
+          "TITLE" : "触发管道key",
+          "DESCRIPTION" : "触发管道key定义"
+        },
+        "TRIGGERCHANNELNAME" : {
+          "TITLE" : "触发管道名称",
+          "DESCRIPTION" : "触发管道名称"
+        },
+        "TRIGGERCHANNELTYPE" : {
+          "TITLE" : "触发通道类型",
+          "DESCRIPTION" : "触发通道类型定义"
+        },
+        "TRIGGERCHANNELDESTINATION" : {
+          "TITLE" : "触发通道目的地",
+          "DESCRIPTION" : "触发通道目的地定义"
+        },
+        "KEYDETECTIONFIXEDVALUE" : {
+          "TITLE" : "事件key固定值",
+          "DESCRIPTION" : "事件key固定值定义"
+        },
+        "KEYDETECTIONJSONFIELD" : {
+          "TITLE" : "事件key json 字段",
+          "DESCRIPTION" : "事件key json 字段"
+        },
+        "KEYDETECTIONJSONPOINTER" : {
+          "TITLE" : "事件key json 指针",
+          "DESCRIPTION" : "事件key json 指针"
+        }
+      },
       "ISTRANSACTIONPACKAGE" : {
         "ISTRANSACTION" : {
           "TITLE" : "是事务子流程",
@@ -806,19 +901,19 @@
       "COMPLETIONCONDITIONPACKAGE" : {
         "COMPLETIONCONDITION" : {
           "TITLE" : "完成条件",
-          "DESCRIPTION" : "临时子流程的完成条件"
+          "DESCRIPTION" : "自组网子流程的完成条件"
         }
       },
       "ORDERINGPACKAGE" : {
         "ORDERING" : {
           "TITLE" : "排序",
-          "DESCRIPTION" : "临时子流程的排序"
+          "DESCRIPTION" : "自组网子流程的排序"
         }
       },
       "CANCELREMAININGINSTANCESPACKAGE" : {
         "CANCELREMAININGINSTANCES" : {
           "TITLE" : "取消剩余的实例",
-          "DESCRIPTION" : "取消临时子流程的剩余实例？"
+          "DESCRIPTION" : "取消自组网子流程的剩余实例？"
         }
       }
 
@@ -870,6 +965,11 @@
         "TITLE" : "升级开始事件",
         "DESCRIPTION" : "捕获抛出的BPMN升级的启动事件"
       },
+      "STARTEVENTREGISTRYEVENT" : {
+        "TITLE" : "注册开始事件",
+        "DESCRIPTION" : "注册开始事件"
+      },
+
       "USERTASK" : {
         "TITLE" : "用户任务",
         "DESCRIPTION" : "分配给特定人的任务"
@@ -926,6 +1026,11 @@
         "TITLE" : "子流程",
         "DESCRIPTION" : "子流程范围"
       },
+      "SENDEVENTTASK" : {
+        "TITLE" : "事件发送任务",
+        "DESCRIPTION" : "事件发送任务"
+      },
+
       "COLLAPSEDSUBPROCESS" : {
         "TITLE" : "折叠子流程",
         "DESCRIPTION" : "子流程范围"
@@ -939,7 +1044,7 @@
         "DESCRIPTION" : "一个调用活动"
       },
       "EXCLUSIVEGATEWAY" : {
-        "TITLE" : "互斥网关",
+        "TITLE" : "排他网关",
         "DESCRIPTION" : "一个选择的网关"
       },
       "PARALLELGATEWAY" : {
@@ -947,7 +1052,7 @@
         "DESCRIPTION" : "一个并行的网关"
       },
       "INCLUSIVEGATEWAY" : {
-        "TITLE" : "包容性网关",
+        "TITLE" : "包容网关",
         "DESCRIPTION" : "一个包容性网关"
       },
       "EVENTGATEWAY" : {
@@ -981,6 +1086,10 @@
       "BOUNDARYCANCELEVENT" : {
         "TITLE" : "边界取消事件",
         "DESCRIPTION" : "一个边界取消事件"
+      },
+      "BOUNDARYEVENTREGISTRYEVENT" : {
+        "TITLE" : "边界注册事件",
+        "DESCRIPTION" : "边界注册事件"
       },
       "BOUNDARYCOMPENSATIONEVENT" : {
         "TITLE" : "边界补偿事件",
@@ -1039,8 +1148,8 @@
         "DESCRIPTION" : "用于构造流程定义的池"
       },
       "LANE" : {
-        "TITLE" : "通道",
-        "DESCRIPTION" : "构建流程定义的通道"
+        "TITLE" : "泳道",
+        "DESCRIPTION" : "构建流程定义的泳道"
       },
       "SEQUENCEFLOW" : {
         "TITLE" : "顺序流",
@@ -1067,577 +1176,8 @@
         "DESCRIPTION" : "对数据存储的引用。"
       },
       "ADHOCSUBPROCESS" : {
-        "TITLE" : "临时子流程",
-        "DESCRIPTION" : "临时子流程"
-      }
-    }
-  },
-
-  "CMMN" : {
-    "TITLE": "CMMN编辑器",
-    "DESCRIPTION": "CMMN案例编辑器",
-    "PROPERTYPACKAGES": {
-      "CASE_IDPACKAGE": {
-        "CASE_ID": {
-          "TITLE": "案例标识符",
-          "DESCRIPTION": "案例定义的唯一标识符。"
-        }
-      },
-      "OVERRIDEIDPACKAGE": {
-        "OVERRIDEID": {
-          "TITLE": "主键Id",
-          "DESCRIPTION": "元素的唯一标识符"
-        }
-      },
-      "NAMEPACKAGE": {
-        "NAME": {
-          "TITLE": "案例名称",
-          "DESCRIPTION": "CMMN元素的描述性名称。"
-        }
-      },
-      "DOCUMENTATIONPACKAGE": {
-        "DOCUMENTATION": {
-          "TITLE": "描述文档",
-          "DESCRIPTION": "CMMN元素的描述性名称。"
-        }
-      },
-      "BLOCKINGPACKAGE": {
-        "ISBLOCKING": {
-          "TITLE": "阻塞",
-          "DESCRIPTION": "布尔属性，默认为true。如果为false，则任务将在执行任何关联逻辑后自动完成任务"
-        },
-        "ISBLOCKINGEXPRESSION": {
-          "TITLE": "阻塞表达式",
-          "DESCRIPTION": "在运行时控制此任务是否阻塞的表达式。设置后，将忽略阻塞属性的值。"
-        }
-      },
-      "CASE_INITIATORVARIABLENAMEPACKAGE": {
-        "CASE_INITIATORVARIABLENAME": {
-          "TITLE": "启动器变量名称",
-          "DESCRIPTION": "设置要用于案例启动程序值的变量名称。"
-        }
-      },
-      "CASE_AUTHORPACKAGE": {
-        "CASE_AUTHOR": {
-          "TITLE": "案例作者",
-          "DESCRIPTION": "案例定义的作者"
-        }
-      },
-      "CASE_VERSIONPACKAGE": {
-        "CASE_VERSION": {
-          "TITLE": "案例版本字符串（仅文档）",
-          "DESCRIPTION": "版本标识符用于文档目的。"
-        }
-      },
-      "CASE_NAMESPACEPACKAGE": {
-        "CASE_NAMESPACE": {
-          "TITLE": "目标命名空间",
-          "DESCRIPTION": "案例定义的目标名称空间。"
-        }
-      },
-      "USERTASKASSIGNMENTPACKAGE": {
-        "USERTASKASSIGNMENT": {
-          "TITLE": "分配任务",
-          "DESCRIPTION": "用户任务的分配定义"
-        }
-      },
-      "TASKLISTENERSPACKAGE": {
-        "TASKLISTENERS": {
-          "TITLE": "任务监听器",
-          "DESCRIPTION": "人工任务的监听器"
-        }
-      },
-      "FORMPROPERTIESPACKAGE": {
-        "FORMPROPERTIES": {
-          "TITLE": "表单属性",
-          "DESCRIPTION": "具有表单属性列表的表单定义"
-        }
-      },
-      "FORMKEYDEFINITIONPACKAGE": {
-        "FORMKEYDEFINITION": {
-          "TITLE": "表单键",
-          "DESCRIPTION": "提供对表单的引用的表单键。"
-        }
-      },
-      "FORMFIELDVALIDATIONPACKAGE": {
-        "FORMFIELDVALIDATION": {
-          "TITLE": "验证表单字段",
-          "DESCRIPTION": "在表单提交时验证表单字段。（允许值为“true”、“false”或表达式）"
-        }
-      },
-      "DUEDATEDEFINITIONPACKAGE": {
-        "DUEDATEDEFINITION": {
-          "TITLE": "到期日",
-          "DESCRIPTION": "用户任务的截止日期"
-        }
-      },
-      "PRIORITYDEFINITIONPACKAGE": {
-        "PRIORITYDEFINITION": {
-          "TITLE": "优先级",
-          "DESCRIPTION": "用户任务的优先级。"
-        }
-      },
-      "SERVICETASKCLASSPACKAGE": {
-        "SERVICETASKCLASS": {
-          "TITLE": "类",
-          "DESCRIPTION": "实现服务任务逻辑的类。"
-        }
-      },
-      "SERVICETASKEXPRESSIONPACKAGE": {
-        "SERVICETASKEXPRESSION": {
-          "TITLE": "表达式",
-          "DESCRIPTION": "用表达式定义的服务任务逻辑。"
-        }
-      },
-      "SERVICETASKDELEGATEEXPRESSIONPACKAGE": {
-        "SERVICETASKDELEGATEEXPRESSION": {
-          "TITLE": "委托表达式",
-          "DESCRIPTION": "用委托表达式定义的服务任务逻辑。"
-        }
-      },
-      "SERVICETASKFIELDSPACKAGE": {
-        "SERVICETASKFIELDS": {
-          "TITLE": "类字段",
-          "DESCRIPTION": "字段扩展"
-        }
-      },
-      "SERVICETASKRESULTVARIABLEPACKAGE": {
-        "SERVICETASKRESULTVARIABLE": {
-          "TITLE": "结果变量名称",
-          "DESCRIPTION": "存储服务任务结果的进程变量名。"
-        }
-      },
-      "ASYNCPACKAGE": {
-        "ISASYNC": {
-          "TITLE": "异步",
-          "DESCRIPTION": "指示是否需要异步执行任务。"
-        },
-        "ISEXCLUSIVE": {
-          "TITLE": "独占",
-          "DESCRIPTION": "指示是否必须以独占方式执行异步任务"
-        }
-      },
-      "MAILTASKHEADERSPACKAGE": {
-        "MAILTASKHEADERS": {
-          "TITLE": "报头",
-          "DESCRIPTION": "行分隔邮件头（例如 - X-Attribute: value）"
-        }
-      },
-      "MAILTASKTOPACKAGE": {
-        "MAILTASKTO": {
-          "TITLE": "接收者",
-          "DESCRIPTION": "如果是电子邮件，则为收件人。在逗号分隔的列表中定义了多个收件人。"
-        }
-      },
-      "MAILTASKFROMPACKAGE": {
-        "MAILTASKFROM": {
-          "TITLE": "发件者",
-          "DESCRIPTION": "发件人电子邮件地址。如果未提供，则使用从地址配置的默认值。"
-        }
-      },
-      "MAILTASKSUBJECTPACKAGE": {
-        "MAILTASKSUBJECT": {
-          "TITLE": "主题",
-          "DESCRIPTION": "电子邮件的主题。"
-        }
-      },
-      "MAILTASKCCPACKAGE": {
-        "MAILTASKCC": {
-          "TITLE": "抄送",
-          "DESCRIPTION": "电子邮件的抄送。在逗号分隔的列表中定义了多个收件人"
-        }
-      },
-      "MAILTASKBCCPACKAGE": {
-        "MAILTASKBCC": {
-          "TITLE": "密送",
-          "DESCRIPTION": "电子邮件的密件抄送。在逗号分隔的列表中定义了多个收件人"
-        }
-      },
-      "MAILTASKTEXTPACKAGE": {
-        "MAILTASKTEXT": {
-          "TITLE": "文本",
-          "DESCRIPTION": "电子邮件的内容，以防需要发送不丰富的普通电子邮件。可与HTML结合使用，用于不支持丰富内容的电子邮件客户端。然后，客户机将返回到此文本唯一的备选方案。"
-        }
-      },
-      "MAILTASKHTMLPACKAGE": {
-        "MAILTASKHTML": {
-          "TITLE": "Html",
-          "DESCRIPTION": "一段HTML，它是电子邮件的内容。"
-        }
-      },
-      "MAILTASKCHARSETPACKAGE": {
-        "MAILTASKCHARSET": {
-          "TITLE": "字符集",
-          "DESCRIPTION": "允许更改电子邮件的字符集，这对于许多非英语语言是必需的。"
-        }
-      },
-      "TEXTPACKAGE": {
-        "TEXT": {
-          "TITLE": "文本",
-          "DESCRIPTION": "文本批注的文本。"
-        }
-      },
-      "FORMREFERENCEPACKAGE": {
-        "FORMREFERENCE": {
-          "TITLE": "表单引用",
-          "DESCRIPTION": "一个表单的引用"
-        }
-      },
-      "DECISIONTASKDECISIONTABLEREFERENCEPACKAGE": {
-        "DECISIONTASKDECISIONTABLEREFERENCE": {
-          "TITLE": "决策表参考",
-          "DESCRIPTION": "设置决策表引用"
-        }
-      },
-      "DECISIONTASKTHROWERRORONNOHITSPACKAGE": {
-        "DECISIONTASKTHROWERRORONNOHITS": {
-          "TITLE": "如果未命中任何规则，则抛出错误",
-          "DESCRIPTION": "如果未命中决策表的规则，因而找不到结果，则应抛出错误。"
-        }
-      },
-      "DECISIONTASKFALLBACKTODEFAULTTENANTPACKAGE": {
-        "DECISIONTASKFALLBACKTODEFAULTTENANT": {
-          "TITLE": "回退到默认租户",
-          "DESCRIPTION": "当上一次尝试用租户查找决策定义失败时，查找不带租户的决策定义。"
-        }
-      },
-      "HTTPTASKREQUESTMETHODPACKAGE": {
-        "HTTPTASKREQUESTMETHOD": {
-          "TITLE": "请求方法",
-          "DESCRIPTION": "请求方法（例如GET、POST、PUT等）。"
-        }
-      },
-      "HTTPTASKREQUESTURLPACKAGE": {
-        "HTTPTASKREQUESTURL": {
-          "TITLE": "请求URL",
-          "DESCRIPTION": "请求URL（例如-http://flowable.org）。"
-        }
-      },
-      "HTTPTASKREQUESTHEADERSPACKAGE": {
-        "HTTPTASKREQUESTHEADERS": {
-          "TITLE": "请求头",
-          "DESCRIPTION": "行分隔的HTTP请求头（例如-content-type:application/json）。"
-        }
-      },
-      "HTTPTASKREQUESTBODYPACKAGE": {
-        "HTTPTASKREQUESTBODY": {
-          "TITLE": "请求正文",
-          "DESCRIPTION": "请求主体（例如-$samplebody）。"
-        }
-      },
-      "HTTPTASKREQUESTBODYENCODINGPACKAGE": {
-        "HTTPTASKREQUESTBODYENCODING": {
-          "TITLE": "请求正文编码",
-          "DESCRIPTION": "Request body encoding (For example- UTF-8)."
-        }
-      },
-      "HTTPTASKREQUESTTIMEOUTPACKAGE": {
-        "HTTPTASKREQUESTTIMEOUT": {
-          "TITLE": "请求超时（ms）",
-          "DESCRIPTION": "请求超时（毫秒）（例如-5000）。"
-        }
-      },
-      "HTTPTASKDISALLOWREDIRECTSPACKAGE": {
-        "HTTPTASKDISALLOWREDIRECTS": {
-          "TITLE": "不允许重定向",
-          "DESCRIPTION": "禁止HTTP重定向的标志。"
-        }
-      },
-      "HTTPTASKFAILSTATUSCODESPACKAGE": {
-        "HTTPTASKFAILSTATUSCODES": {
-          "TITLE": "故障状态代码",
-          "DESCRIPTION": "以逗号分隔的要重试的HTTP响应状态代码列表，例如400,5xx。"
-        }
-      },
-      "HTTPTASKHANDLESTATUSCODESPACKAGE": {
-        "HTTPTASKHANDLESTATUSCODES": {
-          "TITLE": "处理状态代码",
-          "DESCRIPTION": "要忽略的HTTP响应状态代码的逗号分隔列表，例如404、3xx。"
-        }
-      },
-      "HTTPTASKIGNOREEXCEPTIONPACKAGE": {
-        "HTTPTASKIGNOREEXCEPTION": {
-          "TITLE": "忽略异常",
-          "DESCRIPTION": "忽略异常的标志。"
-        }
-      },
-      "HTTPTASKRESPONSEVARIABLENAMEPACKAGE": {
-        "HTTPTASKRESPONSEVARIABLENAME": {
-          "TITLE": "响应变量名",
-          "DESCRIPTION": "定义存储HTTP响应的变量名。"
-        }
-      },
-      "HTTPTASKSAVEREQUESTVARIABLESPACKAGE": {
-        "HTTPTASKSAVEREQUESTVARIABLES": {
-          "TITLE": "保存请求变量",
-          "DESCRIPTION": "保存请求变量的标志。"
-        }
-      },
-      "HTTPTASKSAVERESPONSEPARAMETERSPACKAGE": {
-        "HTTPTASKSAVERESPONSEPARAMETERS": {
-          "TITLE": "保存响应状态，标题",
-          "DESCRIPTION": "保存响应状态、标题等的标志。"
-        }
-      },
-      "HTTPTASKRESULTVARIABLEPREFIXPACKAGE": {
-        "HTTPTASKRESULTVARIABLEPREFIX": {
-          "TITLE": "结果变量前缀",
-          "DESCRIPTION": "执行变量名称的前缀。"
-        }
-      },
-      "HTTPTASKSAVERESPONSEPARAMETERSTRANSIENTPACKAGE": {
-        "HTTPTASKSAVERESPONSEPARAMETERSTRANSIENT": {
-          "TITLE": "将响应保存为瞬态变量",
-          "DESCRIPTION": "指示存储响应变量瞬态的标志"
-        }
-      },
-      "HTTPTASKSAVERESPONSEASJSONPACKAGE": {
-        "HTTPTASKSAVERESPONSEASJSON": {
-          "TITLE": "将响应另存为JSON",
-          "DESCRIPTION": "指示将响应变量存储为JSON变量而不是字符串的标志"
-        }
-      },
-      "CASETASKCASEREFERENCEPACKAGE": {
-        "CASETASKCASEREFERENCE": {
-          "TITLE": "案例参考",
-          "DESCRIPTION": "设置案例参考"
-        }
-      },
-      "PROCESSTASKPROCESSREFERENCEPACKAGE": {
-        "PROCESSTASKPROCESSREFERENCE": {
-          "TITLE": "工艺参考",
-          "DESCRIPTION": "设置进程引用"
-        }
-      },
-      "FALLBACKTODEFAULTTENANTPACKAGE": {
-        "FALLBACKTODEFAULTTENANT": {
-          "TITLE": "回退到默认租户",
-          "DESCRIPTION": "当指定租户中的键找不到定义时，使用默认租户作为回退"
-        }
-      },
-      "PROCESSTASKINPARAMETERSPACKAGE": {
-        "PROCESSTASKINPARAMETERS": {
-          "TITLE": "在参数中",
-          "DESCRIPTION": "输入参数的定义"
-        }
-      },
-      "PROCESSTASKOUTPARAMETERSPACKAGE": {
-        "PROCESSTASKOUTPARAMETERS": {
-          "TITLE": "输出参数",
-          "DESCRIPTION": "输出参数的定义"
-        }
-      },
-      "TIMEREXPRESSIONPACKAGE": {
-        "TIMEREXPRESSION": {
-          "TITLE": "计时器表达式",
-          "DESCRIPTION": "一个iso-8601字符串或表达式，它解析为iso-8601字符串或java.util.Date。"
-        }
-      },
-      "TIMERSTARTTRIGGERPACKAGE": {
-        "TIMERSTARTTRIGGERSOURCEREF": {
-          "TITLE": "启动触发计划项",
-          "DESCRIPTION": "对计划项的引用，为其配置的标准事件需要发生才能启动计时器（可选）"
-        },
-        "TRANSITIONEVENT": {
-          "TITLE": "启动触发器转换事件",
-          "DESCRIPTION": "过渡事件的类型. 仅在设置开始触发计划项时使用"
-        }
-      },
-      "DECISIONTASKDECISIONREFERENCEPACKAGE": {
-        "DECISIONTASKDECISIONREFERENCE": {
-          "TITLE": "决策参考",
-          "DESCRIPTION": "设置决策参考"
-        }
-      },
-      "IFPARTCONDITIONPACKAGE": {
-        "IFPARTCONDITION": {
-          "TITLE": "条件",
-          "DESCRIPTION": ""
-        }
-      },
-      "TRIGGERMODEPACKAGE": {
-        "TRIGGERMODE": {
-          "TITLE": "触发模式",
-          "DESCRIPTION": "确定是否使用内存（默认）为without（on event）评估哨兵条件。默认值意味着满足的哨兵部分（on和ifparts）将被存储。当重新评估哨兵时，后续评估将使用存储的部分。使用“on event”，对所有部分进行评估，如果所有部分均为真，则哨兵满意。否则，所有结果都将被丢弃而不存储。"
-        }
-      },
-      "AUTOCOMPLETEPACKAGE": {
-        "AUTOCOMPLETEENABLED": {
-          "TITLE": "自动完成",
-          "DESCRIPTION": "当所有必需的子级都处于结束状态且没有其他子级处于活动状态时，指示阶段将自动完成的标志。"
-        },
-        "AUTOCOMPLETECONDITION": {
-          "TITLE": "自动完成条件",
-          "DESCRIPTION": "如果阶段可以自动完成，则解析为的表达式。"
-        }
-      },
-      "REQUIREDRULEPACKAGE": {
-        "REQUIREDENABLED": {
-          "TITLE": "必须的",
-          "DESCRIPTION": "指示在确定父阶段完成时是否需要阶段、任务或里程碑的标志。默认为false。"
-        },
-        "REQUIREDRULECONDITION": {
-          "TITLE": "必需规则",
-          "DESCRIPTION": "在确定父阶段完成时，决定阶段、任务或里程碑是否需要的表达式。"
-        }
-      },
-      "REPETITIONRULEPACKAGE": {
-        "REPETITIONENABLED": {
-          "TITLE": "重复",
-          "DESCRIPTION": "指示是否启用重复的标志"
-        },
-        "REPETITIONRULECONDITION": {
-          "TITLE": "重复规则",
-          "DESCRIPTION": "用于确定是否需要创建计划的新实例的表达式。"
-        },
-        "REPETITIONCOUNTERVARIABLENAME": {
-          "TITLE": "重复计数器变量",
-          "DESCRIPTION": "存储重复实例计数器的局部变量的名称。默认值为“repetitionCounter”。"
-        }
-      },
-      "MANUALACTIVATIONRULEPACKAGE": {
-        "MANUALACTIVATIONENABLED": {
-          "TITLE": "手动激活",
-          "DESCRIPTION": "指示任务或阶段是否需要手动激活的标志。默认为false。"
-        },
-        "MANUALACTIVATIONRULECONDITION": {
-          "TITLE": "手动激活规则",
-          "DESCRIPTION": "一种表达式，用于确定阶段或任务是否需要手动激活。"
-        }
-      },
-      "COMPLETIONNEUTRALRULEPACKAGE": {
-        "COMPLETIONNEUTRALENABLED": {
-          "TITLE": "完成中性",
-          "DESCRIPTION": "指示计划项是否处于非完成状态的标志。默认为false。"
-        },
-        "COMPLETIONNEUTRALRULECONDITION": {
-          "TITLE": "完成中性规则",
-          "DESCRIPTION": "用于确定计划项是否为非完成状态的表达式。"
-        }
-      },
-      "PLANITEMLIFECYCLELISTENERSPACKAGE": {
-        "PLANITEMLIFECYCLELISTENERS": {
-          "TITLE": "生命周期监听器",
-          "DESCRIPTION": "计划项生命周期事件的监听器"
-        }
-      },
-      "DISPLAYORDERPACKAGE": {
-        "DISPLAYORDER": {
-          "TITLE": "显示顺序",
-          "DESCRIPTION": "表示获取或显示阶段概述时与其他阶段相比的顺序的数值。"
-        }
-      },
-      "INCLUDEINSTAGEOVERVIEWPACKAGE": {
-        "INCLUDEINSTAGEOVERVIEW": {
-          "TITLE": "包括在概述中",
-          "DESCRIPTION": "指示是否应为阶段概述考虑此阶段"
-        }
-      },
-      "SCRIPTFORMATPACKAGE": {
-        "SCRIPTFORMAT": {
-          "TITLE": "脚本格式",
-          "DESCRIPTION": "脚本任务的脚本格式（javascript、groovy等）。"
-        }
-      },
-      "SCRIPTTEXTPACKAGE": {
-        "SCRIPTTEXT": {
-          "TITLE": "脚本",
-          "DESCRIPTION": "脚本任务的脚本文本。"
-        }
-      },
-      "TRANSITIONEVENTPACKAGE": {
-        "TRANSITIONEVENT": {
-          "TITLE": "过渡事件类型",
-          "DESCRIPTION": "过渡事件类型"
-        }
-      },
-      "AVAILABLECONDITIONPACKAGE": {
-        "AVAILABLECONDITION": {
-          "TITLE": "可用条件",
-          "DESCRIPTION": "事件监听器上的可选条件表达式，用于指示何时可用。"
-        }
-      }
-    },
-    "STENCILS" : {
-      "GROUPS" : {
-        "DIAGRAM" : "图解",
-        "CONTAINERS" : "容器",
-        "ACTIVITIES" : "活动",
-        "EVENTLISTENERS" : "事件监听器",
-        "SENTRIES" : "哨兵",
-        "CONNECTORS" : "连接器"
-      },
-      "CMMNDIAGRAM" : {
-        "TITLE" : "CMMN-图",
-        "DESCRIPTION" : "CMMN 2.0 图表。"
-      },
-      "CASEPLANMODEL" : {
-        "TITLE" : "案例计划模型",
-        "DESCRIPTION" : "案例计划模型"
-      },
-      "STAGE" : {
-        "TITLE" : "阶段",
-        "DESCRIPTION" : "阶段"
-      },
-      "TASK" : {
-        "TITLE" : "任务",
-        "DESCRIPTION" : "手动任务"
-      },
-      "HUMANTASK" : {
-        "TITLE" : "人工任务",
-        "DESCRIPTION" : "分配给特定人员的手动任务"
-      },
-      "SERVICETASK" : {
-        "TITLE" : "服务任务",
-        "DESCRIPTION" : "具有服务逻辑的自动任务"
-      },
-      "DECISIONTASK" : {
-        "TITLE" : "决策任务",
-        "DESCRIPTION" : "调用DMN决策的任务"
-      },
-      "HTTPTASK" : {
-        "TITLE" : "HTTP任务",
-        "DESCRIPTION" : "一个HTTP任务"
-      },
-      "SCRIPTTASK" : {
-        "TITLE" : "脚本任务",
-        "DESCRIPTION" : "具有脚本逻辑的自动任务"
-      },
-      "MILESTONE" : {
-        "TITLE" : "里程碑",
-        "DESCRIPTION" : "里程碑"
-      },
-      "CASETASK" : {
-        "TITLE" : "案例任务",
-        "DESCRIPTION" : "引用案例定义以启动新实例"
-      },
-      "PROCESSTASK" : {
-        "TITLE" : "流程任务",
-        "DESCRIPTION" : "对流程定义的引用以启动新实例"
-      },
-      "EVENTLISTENER" : {
-        "TITLE" : "事件监听器",
-        "DESCRIPTION" : "通用事件监听器"
-      },
-      "TIMEREVENTLISTENER" : {
-        "TITLE" : "计时器事件监听器",
-        "DESCRIPTION" : "带有计时器触发器的事件监听器"
-      },
-      "USEREVENTLISTENER" : {
-        "TITLE" : "用户事件监听器",
-        "DESCRIPTION" : "用户事件的监听器"
-      },
-      "ENTRYCRITERION" : {
-        "TITLE" : "进入准则",
-        "DESCRIPTION" : "定义进入标准的哨兵"
-      },
-      "EXITCRITERION" : {
-        "TITLE" : "退出准则",
-        "DESCRIPTION" : "定义出口标准的哨兵"
-      },
-      "ASSOCIATION" : {
-        "TITLE" : "关联",
-        "DESCRIPTION" : "将哨兵与计划项目联系起来"
+        "TITLE" : "自组网子流程",
+        "DESCRIPTION" : "自组网子流程"
       }
     }
   },
