@@ -1,4 +1,173 @@
 
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for company
+-- ----------------------------
+DROP TABLE IF EXISTS `company`;
+CREATE TABLE `company`  (
+  `ID` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `com_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `com_code` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `statue` int(11) NULL DEFAULT NULL COMMENT '0-未审核  1-已审核   9-账户余额不足   2-黑名单',
+  `com_type` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '企业类型 0-购买方 1-渠道商 2-供应商',
+  `create_date` timestamp(0) NULL DEFAULT NULL,
+  `edite_date` timestamp(0) NULL DEFAULT NULL,
+  `inv_com_code` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `validate_state` varchar(1) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '数据有效性 0-无效 1-有效',
+  PRIMARY KEY (`ID`, `com_code`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for account
+-- ----------------------------
+DROP TABLE IF EXISTS `account`;
+CREATE TABLE `account`  (
+  `ID` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'ID',
+  `com_code` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '企业编码',
+  `account_code` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '账号',
+  `balance` decimal(19, 2) NULL DEFAULT NULL COMMENT '现金余额',
+  `cou_balance` decimal(19, 2) NULL DEFAULT NULL COMMENT '虚拟币余额',
+  `cre_balance` decimal(19, 2) NULL DEFAULT NULL COMMENT '额度余额',
+  `ice_amount` decimal(19, 2) NULL DEFAULT NULL COMMENT '冻结金额',
+  `rec_balance` decimal(19, 2) NULL DEFAULT NULL COMMENT '可开票余额',
+  `create_date` timestamp(0) NULL DEFAULT NULL,
+  `edite_date` timestamp(0) NULL DEFAULT NULL,
+  `validate_state` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '数据有效性 0-无效 1-有效'
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for share_rule
+-- ----------------------------
+DROP TABLE IF EXISTS `share_rule`;
+CREATE TABLE `share_rule`  (
+  `ID` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `sale_product_id` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '产品分销权记录id',
+  `rule_type` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '计算基准 1-底价 2-毛利润 3-固定金额',
+  `rule_rate` decimal(19, 2) NULL DEFAULT NULL COMMENT '比例 存除以100的小数',
+  `in_com_code` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '分润企业编码',
+  `memo` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
+  `validate_state` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '数据有效性 0-无效 1-有效',
+  `create_date` timestamp(0) NULL DEFAULT NULL,
+  `edite_date` timestamp(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`ID`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for sale_product
+-- ----------------------------
+DROP TABLE IF EXISTS `sale_product`;
+CREATE TABLE `sale_product`  (
+  `ID` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `product_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '产品名称',
+  `product_code` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '产品编码',
+  `g_com_code` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '供应商编码',
+  `product_price` decimal(19, 2) NULL DEFAULT NULL COMMENT '产品单价',
+  `min_price` decimal(19, 2) NULL DEFAULT NULL COMMENT '最小售卖价格',
+  `max_price` decimal(19, 2) NULL DEFAULT NULL COMMENT '最大售卖价格',
+  `retail_com_code` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '分销商企业编码',
+  `state` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '状态  0-申请 1-审核中 2-审核通过 3-审核拒绝 9-作废',
+  `validate_state` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '数据有效性 0-无效 1-有效',
+  `create_date` timestamp(0) NULL DEFAULT NULL,
+  `edit_date` timestamp(0) NULL DEFAULT NULL,
+  `start_date` date NULL DEFAULT NULL COMMENT '开始日期',
+  `end_date` date NULL DEFAULT NULL COMMENT '结束日期',
+  PRIMARY KEY (`ID`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for sale_order
+-- ----------------------------
+DROP TABLE IF EXISTS `sale_order`;
+CREATE TABLE `sale_order`  (
+  `ID` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'id',
+  `sale_product_id` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '分销记录id',
+  `buy_com_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '买方企业名称',
+  `buy_com_code` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '买房企业编码',
+  `price` decimal(19, 2) NULL DEFAULT NULL COMMENT '单价',
+  `count` int(11) NULL DEFAULT NULL COMMENT '数量',
+  `product_code` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '产品编码',
+  `produce_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '产品名称',
+  `sum_amount` decimal(19, 2) NULL DEFAULT NULL COMMENT '票面金额',
+  `sale_com_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '卖方企业名称',
+  `sale_com_code` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '卖方企业编码',
+  `state` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '订单状态 0-申请状态 1-审核中 2-待支付 3-已支付 9-作废',
+  `create_date` timestamp(0) NULL DEFAULT NULL,
+  `edite_date` timestamp(0) NULL DEFAULT NULL,
+  `tax_state` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '开票状态 0-未开票 1-已申请 2-已开票 9-作废',
+  `validate_state` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '数据有效性 0-无效 1-有效'
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : sh
+ Source Server Type    : MySQL
+ Source Server Version : 80018
+ Source Host           : 122.112.4.150:3306
+ Source Schema         : flowable
+
+ Target Server Type    : MySQL
+ Target Server Version : 80018
+ File Encoding         : 65001
+
+ Date: 29/02/2020 16:53:14
+*/
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for product
+-- ----------------------------
+DROP TABLE IF EXISTS `product`;
+CREATE TABLE `product`  (
+  `ID` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `product_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '产品名称',
+  `product_type` varchar(4) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '产品类型',
+  `product_code` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '产品编码',
+  `price` decimal(19, 2) NULL DEFAULT NULL COMMENT '产品底价',
+  `memo` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `sug_price` decimal(19, 2) NULL DEFAULT NULL COMMENT '建议价格',
+  `min_price` decimal(19, 2) NULL DEFAULT NULL COMMENT '最低价格',
+  `max_price` decimal(19, 2) NULL DEFAULT NULL COMMENT '最高价格',
+  `create_date` timestamp(0) NULL DEFAULT NULL,
+  `edite_date` timestamp(0) NULL DEFAULT NULL,
+  `validate_state` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '数据有效性 0-无效 1-有效',
+  `state` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '产品状态 0-申请 1-审核中 2-上架 3-审核拒绝 9-下架',
+  `product_com_code` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '生产企业编码',
+  `product_com_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '生产企业名称',
+  PRIMARY KEY (`ID`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
 -- ----------------------------
 -- Table structure for fail_info
 -- ----------------------------
