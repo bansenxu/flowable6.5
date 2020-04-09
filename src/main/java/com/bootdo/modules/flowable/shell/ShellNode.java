@@ -7,6 +7,9 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
+import com.bootdo.ext.servicenode.BaseServiceNode;
+import com.bootdo.ext.util.IConstants;
+import lombok.extern.slf4j.Slf4j;
 import org.flowable.bpmn.model.ext.ExtChildNode;
 import org.flowable.bpmn.model.ext.ExtModelEditor;
 import org.flowable.engine.delegate.DelegateExecution;
@@ -19,9 +22,9 @@ import ch.ethz.ssh2.Connection;
 import ch.ethz.ssh2.Session;
 import ch.ethz.ssh2.StreamGobbler;
 
-
+@Slf4j
 @Component
-public class ShellNode implements JavaDelegate{
+public class ShellNode extends BaseServiceNode implements JavaDelegate{
 	
 	private static String DEFAULTCHART = "UTF-8";
 	
@@ -33,14 +36,36 @@ public class ShellNode implements JavaDelegate{
 		Map<String, Object> map = execution.getVariables();
 
 		ExtModelEditor editorModel = (ExtModelEditor)map.get("model");
-		
+		String pid = execution.getId();
+		String sid = execution.getCurrentFlowElement().getId();
+
+
+		Map<String, String> myVars = getMyVars(pid, execution);
+		myVars.entrySet().stream().forEach(e -> {
+			if (-1 < e.getKey().indexOf(IConstants.PROCESS_VAR_PARA_SEP)) {
+
+			} else {
+				execution.setVariable(null == sid ? "" : sid + IConstants.SEP_PROCESS_PID_NAME + e.getKey(),
+						null == e.getValue() ? "" : e.getValue());
+			}
+		});
 		String[] commond = getCommond(editorModel);
 		
 		ExtDatasourceDO ds = (ExtDatasourceDO)map.get("dataSource");
+
+		boolean bRet=false;
 		try {
-			executeCommond(ds,commond);
+			bRet= executeCommond(ds,commond);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		Object objMap = execution.getVariable(IConstants.KEY_MAP_GLOBAL_FLOW_RESPONSE);
+		if (null != objMap) {
+			Map<String, String> gMap = (Map<String, String>) objMap;
+			gMap.put(sid, bRet ? "true" : "false");
+			execution.setVariable(IConstants.KEY_MAP_GLOBAL_FLOW_RESPONSE, gMap);
+		} else {
+			log.error(" get  KEY_MAP_GLOBAL_FLOW_RESPONSE   is null!!!");
 		}
 		
 	}

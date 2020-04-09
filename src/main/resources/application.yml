@@ -1,5 +1,6 @@
 server:
   session-timeout: 1800
+  max-http-header-size: 102400
 spring:
   thymeleaf:
     mode: HTML
@@ -9,7 +10,7 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
   profiles:
     #active: develop
-    active: prod
+    active: demo
   servlet:
     multipart:
       max-file-size: 30Mb
