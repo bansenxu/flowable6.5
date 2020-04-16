@@ -90,7 +90,7 @@
         <Logger name="org.apache.http" level="debug" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
-        <Logger name="org.keycloak" level="trace" additivity="false">
+        <Logger name="org.keycloak" level="info" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
 

@@ -22,11 +22,15 @@ public class SqlNode extends BaseServiceNode implements JavaDelegate {
     public void execute(DelegateExecution execution) {
         // TODO Auto-generated method stub
         Map<String, Object> map = execution.getVariables();
-        ExtModelEditor editorModel = (ExtModelEditor) map.get("model");
-        String sql = getSql(editorModel);
 
         String pid = execution.getId();
         String sid = execution.getCurrentFlowElement().getId();
+
+
+        ExtModelEditor editorModel = (ExtModelEditor) map.get("model");
+        String sql = getSql(editorModel, sid);
+
+
         Map<String, String> myVars = getMyVars(pid, execution);
         myVars.entrySet().stream().forEach(e -> {
             if (-1 < e.getKey().indexOf(IConstants.PROCESS_VAR_PARA_SEP)) {
@@ -61,15 +65,16 @@ public class SqlNode extends BaseServiceNode implements JavaDelegate {
     }
 
     /*从json中获取sql*/
-    public String getSql(ExtModelEditor editorModel) {
+    public String getSql(ExtModelEditor editorModel, String sid) {
         String sql = null;
-        for (ExtChildNode tem : editorModel.getChildShapes()) {
-            if (tem != null) {
-                if (tem.getProperties() != null) {
-                    if (tem.getProperties().getServicetaskexpression() != null) {
-                        sql = tem.getProperties().getServicetaskexpression();
-                        sql = sql.replace("\n", "");
-                    }
+        for (ExtChildNode childShape : editorModel.getChildShapes()) {
+            String id = childShape.getProperties().getOverrideid();
+            if (!org.springframework.util.StringUtils.isEmpty(id)) {
+
+                if (sid.equals(id)) {
+                    sql = childShape.getProperties().getServicetaskexpression();
+                    sql = sql.replace("\n", "");
+                    return sql;
                 }
             }
         }
