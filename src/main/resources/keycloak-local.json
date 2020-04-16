@@ -1,10 +1,10 @@
 {
   "realm": "master",
-  "auth-server-url": "http://localhost:8180/auth",
+  "auth-server-url": "http://localhost:8080/auth",
   "ssl-required": "none",
-  "resource": "workflow-app",
+  "resource": "web-app",
   "credentials": {
-    "secret": "e30ee251-96dc-48d6-b841-f5f19ae90792"
+    "secret": "cf4c789d-44ba-4a40-bd7d-f2f8f18cadae"
   },
   "use-resource-role-mappings": true,
   "principal-attribute": "preferred_username",
